@@ -4,17 +4,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
-    const webhookUrl = process.env.WEBHOOK_URL;
-
-    if (!webhookUrl) {
-      console.error("WEBHOOK_URL is not configured");
-      return NextResponse.json(
-        { error: "Server configuration error" },
-        { status: 500 }
-      );
-    }
-
-    const response = await fetch(webhookUrl, {
+    const response = await fetch("https://hook.us2.make.com/dididlwyke8si6lcsd4z6jacd4e48vgj", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

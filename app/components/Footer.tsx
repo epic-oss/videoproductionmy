@@ -83,24 +83,49 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Guides */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
+            <h3 className="text-lg font-semibold mb-4">Guides</h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-gray-400">Corporate Videos</span>
+                <Link
+                  href="/guide/video-production-pricing-malaysia"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Pricing Guide
+                </Link>
               </li>
               <li>
-                <span className="text-gray-400">Event Coverage</span>
+                <Link
+                  href="/guide/corporate-video-production-guide"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Corporate Video Guide
+                </Link>
               </li>
               <li>
-                <span className="text-gray-400">Product Videos</span>
+                <Link
+                  href="/guide/how-to-choose-video-production-company"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  How to Choose
+                </Link>
               </li>
               <li>
-                <span className="text-gray-400">TVC & Commercials</span>
+                <Link
+                  href="/guide/top-video-production-companies-kl"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Top Companies in KL
+                </Link>
               </li>
               <li>
-                <span className="text-gray-400">Social Media Content</span>
+                <Link
+                  href="/guide/event-video-coverage-malaysia"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Event Coverage Guide
+                </Link>
               </li>
             </ul>
           </div>

@@ -22,14 +22,14 @@ export default function CompanyCard({ company }: CompanyCardProps) {
   const { openModal } = useQuote();
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow flex flex-col h-full">
       {/* Top: Logo + Name + Rating */}
       <div className="flex items-start gap-3 mb-3">
         <CompanyLogo website={company.website} name={company.name} size="sm" />
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between gap-2">
             <Link href={`/companies/${company.slug}`}>
-              <h3 className="text-sm font-semibold text-gray-900 hover:text-blue-600 transition-colors leading-tight">
+              <h3 className="text-sm font-semibold text-gray-900 hover:text-blue-600 transition-colors leading-tight line-clamp-2">
                 {company.name}
               </h3>
             </Link>
@@ -75,7 +75,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
       </p>
 
       {/* Actions */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 mt-auto">
         <Link
           href={`/companies/${company.slug}`}
           className="flex-1 text-center px-3 py-1.5 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors text-xs font-medium"

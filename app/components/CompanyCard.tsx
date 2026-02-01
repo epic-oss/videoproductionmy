@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Company } from "@/lib/data";
 import { useQuote } from "./QuoteContext";
+import CompanyLogo from "./CompanyLogo";
 
 interface CompanyCardProps {
   company: Company;
@@ -13,12 +14,7 @@ export default function CompanyCard({ company }: CompanyCardProps) {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      {/* Image placeholder */}
-      <div className="h-48 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-        <span className="text-white text-4xl font-bold opacity-50">
-          {company.name.charAt(0)}
-        </span>
-      </div>
+      <CompanyLogo website={company.website} name={company.name} size="card" />
 
       <div className="p-5">
         {/* Company Name & Rating */}

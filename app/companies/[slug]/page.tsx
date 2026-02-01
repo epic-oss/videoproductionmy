@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { getCompanyBySlug, companies } from "@/lib/data";
 import { useQuote } from "../../components/QuoteContext";
+import CompanyLogo from "../../components/CompanyLogo";
 import { notFound } from "next/navigation";
 
 export default function CompanyProfilePage() {
@@ -45,12 +46,7 @@ export default function CompanyProfilePage() {
 
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-center gap-6">
-              {/* Logo Placeholder */}
-              <div className="w-20 h-20 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-gray-900 text-3xl font-bold">
-                  {company.name.charAt(0)}
-                </span>
-              </div>
+              <CompanyLogo website={company.website} name={company.name} size="lg" />
 
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold">{company.name}</h1>
@@ -316,11 +312,7 @@ export default function CompanyProfilePage() {
                   className="block bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-gray-600 text-lg font-bold">
-                        {relatedCompany.name.charAt(0)}
-                      </span>
-                    </div>
+                    <CompanyLogo website={relatedCompany.website} name={relatedCompany.name} size="sm" />
                     <div>
                       <h3 className="font-semibold text-gray-900">
                         {relatedCompany.name}

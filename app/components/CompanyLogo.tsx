@@ -8,8 +8,24 @@ interface CompanyLogoProps {
   size?: "sm" | "md" | "lg" | "card";
 }
 
+const SOCIAL_MEDIA_DOMAINS = [
+  "facebook.com",
+  "fb.com",
+  "instagram.com",
+  "twitter.com",
+  "x.com",
+  "tiktok.com",
+  "youtube.com",
+  "linkedin.com",
+];
+
+function isSocialMediaUrl(website: string): boolean {
+  const lower = website.toLowerCase();
+  return SOCIAL_MEDIA_DOMAINS.some((domain) => lower.includes(domain));
+}
+
 function getDomain(website: string): string | null {
-  if (!website) return null;
+  if (!website || isSocialMediaUrl(website)) return null;
   try {
     let url = website.trim();
     if (!url.startsWith("http")) url = "https://" + url;
@@ -22,23 +38,23 @@ function getDomain(website: string): string | null {
 }
 
 const sizeClasses = {
-  sm: "w-10 h-10",
-  md: "w-16 h-16",
-  lg: "w-20 h-20",
+  sm: "w-12 h-12",
+  md: "w-20 h-20",
+  lg: "w-24 h-24",
   card: "w-full h-48",
 };
 
-const faviconSizes = {
-  sm: 32,
-  md: 64,
-  lg: 128,
-  card: 128,
+const imgClasses = {
+  sm: "w-8 h-8",
+  md: "w-14 h-14",
+  lg: "w-16 h-16",
+  card: "w-24 h-24",
 };
 
 const iconSizes = {
-  sm: "w-5 h-5",
-  md: "w-8 h-8",
-  lg: "w-10 h-10",
+  sm: "w-6 h-6",
+  md: "w-10 h-10",
+  lg: "w-12 h-12",
   card: "w-16 h-16",
 };
 
@@ -57,27 +73,29 @@ export default function CompanyLogo({ website, name, size = "md" }: CompanyLogoP
   const isCard = size === "card";
 
   if (domain && !imgError) {
-    const logoUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=${faviconSizes[size]}`;
+    const logoUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
     if (isCard) {
       return (
-        <div className={`${sizeClasses[size]} bg-gray-100 flex items-center justify-center`}>
-          <img
-            src={logoUrl}
-            alt={`${name} logo`}
-            className="w-20 h-20 object-contain rounded-lg bg-white p-2 shadow-sm"
-            onError={() => setImgError(true)}
-          />
+        <div className={`${sizeClasses[size]} bg-white border-b border-gray-200 flex items-center justify-center`}>
+          <div className="w-24 h-24 rounded-xl bg-white border border-gray-100 shadow-sm flex items-center justify-center p-3">
+            <img
+              src={logoUrl}
+              alt={`${name} logo`}
+              className="w-full h-full object-contain"
+              onError={() => setImgError(true)}
+            />
+          </div>
         </div>
       );
     }
 
     return (
-      <div className={`${sizeClasses[size]} rounded-lg bg-white border border-gray-200 flex items-center justify-center overflow-hidden flex-shrink-0`}>
+      <div className={`${sizeClasses[size]} rounded-xl bg-white border border-gray-200 shadow-sm flex items-center justify-center flex-shrink-0 p-2`}>
         <img
           src={logoUrl}
           alt={`${name} logo`}
-          className="w-3/4 h-3/4 object-contain"
+          className={`${imgClasses[size]} object-contain`}
           onError={() => setImgError(true)}
         />
       </div>
@@ -87,15 +105,17 @@ export default function CompanyLogo({ website, name, size = "md" }: CompanyLogoP
   // Fallback: professional video camera icon
   if (isCard) {
     return (
-      <div className={`${sizeClasses[size]} bg-gray-100 flex items-center justify-center`}>
-        <DefaultIcon className={`${iconSizes[size]} text-gray-400`} />
+      <div className={`${sizeClasses[size]} bg-white border-b border-gray-200 flex items-center justify-center`}>
+        <div className="w-24 h-24 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center">
+          <DefaultIcon className={`${iconSizes[size]} text-gray-300`} />
+        </div>
       </div>
     );
   }
 
   return (
-    <div className={`${sizeClasses[size]} rounded-lg bg-gray-100 border border-gray-200 flex items-center justify-center flex-shrink-0`}>
-      <DefaultIcon className={`${iconSizes[size]} text-gray-400`} />
+    <div className={`${sizeClasses[size]} rounded-xl bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0`}>
+      <DefaultIcon className={`${iconSizes[size]} text-gray-300`} />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { useQuote } from "./QuoteContext";
 import { locations } from "@/lib/data";
@@ -28,7 +29,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/logo/vpmy-logo.png"
+              alt="VideoProductionMY"
+              width={36}
+              height={36}
+              className="rounded-md"
+            />
             <span className="text-xl font-bold text-white">
               VideoProduction<span className="text-blue-400">MY</span>
             </span>

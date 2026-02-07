@@ -83,47 +83,57 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Guides */}
+          {/* Resources / Guides */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Guides</h3>
+            <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link
-                  href="/guide/video-production-pricing-malaysia"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="/guide/video-production-pricing-malaysia" className="text-gray-400 hover:text-white transition-colors">
                   Pricing Guide
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/guide/corporate-video-production-guide"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Corporate Video Guide
+                <Link href="/guide/corporate-video-production-kl" className="text-gray-400 hover:text-white transition-colors">
+                  Corporate Video KL
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/guide/how-to-choose-video-production-company"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="/guide/product-video-ecommerce" className="text-gray-400 hover:text-white transition-colors">
+                  Product Video Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/guide/event-videography-packages" className="text-gray-400 hover:text-white transition-colors">
+                  Event Packages
+                </Link>
+              </li>
+              <li>
+                <Link href="/guide/agm-live-streaming" className="text-gray-400 hover:text-white transition-colors">
+                  AGM Live Streaming
+                </Link>
+              </li>
+              <li>
+                <Link href="/guide/drone-videography-malaysia" className="text-gray-400 hover:text-white transition-colors">
+                  Drone Videography
+                </Link>
+              </li>
+              <li>
+                <Link href="/guide/how-to-choose-video-production-company" className="text-gray-400 hover:text-white transition-colors">
                   How to Choose
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/guide/top-video-production-companies-kl"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="/guide/corporate-video-production-guide" className="text-gray-400 hover:text-white transition-colors">
+                  Corporate Video Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/guide/top-video-production-companies-kl" className="text-gray-400 hover:text-white transition-colors">
                   Top Companies in KL
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/guide/event-video-coverage-malaysia"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="/guide/event-video-coverage-malaysia" className="text-gray-400 hover:text-white transition-colors">
                   Event Coverage Guide
                 </Link>
               </li>

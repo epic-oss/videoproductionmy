@@ -54,5 +54,58 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...locationPages, ...companyPages];
+  // Guide pages
+  const guideSlugs = [
+    "video-production-pricing-malaysia",
+    "corporate-video-production-guide",
+    "how-to-choose-video-production-company",
+    "top-video-production-companies-kl",
+    "event-video-coverage-malaysia",
+    "product-video-ecommerce",
+    "corporate-video-production-kl",
+    "event-videography-packages",
+    "agm-live-streaming",
+    "drone-videography-malaysia",
+  ];
+
+  const guidePages: MetadataRoute.Sitemap = guideSlugs.map((slug) => ({
+    url: `${baseUrl}/guide/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  // Service + Location combo pages
+  const serviceLocationSlugs = [
+    "corporate-video-kl",
+    "corporate-video-selangor",
+    "event-video-kl",
+    "drone-video-selangor",
+    "product-video-kl",
+  ];
+
+  const serviceLocationPages: MetadataRoute.Sitemap = serviceLocationSlugs.map((slug) => ({
+    url: `${baseUrl}/services/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  // Industry pages
+  const industrySlugs = [
+    "property-video-production",
+    "manufacturing-video-production",
+    "healthcare-video-production",
+    "fnb-restaurant-video",
+    "education-video-production",
+  ];
+
+  const industryPages: MetadataRoute.Sitemap = industrySlugs.map((slug) => ({
+    url: `${baseUrl}/industries/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...locationPages, ...companyPages, ...guidePages, ...serviceLocationPages, ...industryPages];
 }

@@ -2,14 +2,66 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function AGMLiveStreamingGuide() {
   const { openModal } = useQuote();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does AGM live streaming cost in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `AGM live streaming costs RM5,000–RM25,000+ in ${currentYear}. Basic streaming starts at RM5,000, while full hybrid AGM packages with RPV platform, multi-camera, and voting integration range from RM8,000–RM25,000.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is virtual AGM allowed in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Under the Companies Act 2016 and Bursa Malaysia guidelines, Malaysian companies can hold fully virtual or hybrid AGMs with proper Remote Participation and Voting (RPV) facilities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What internet speed is needed for AGM streaming?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A minimum 20Mbps dedicated upload speed is recommended. Professional providers bring backup connectivity (4G/5G bonding) to ensure uninterrupted streaming."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How early should I book an AGM streaming service?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Book at least 4–6 weeks in advance. During AGM season (April–June), experienced providers get booked quickly. Early booking also allows time for platform testing and rehearsals."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "AGM Live Streaming", "item": "https://videoproductionmy.com/guide/agm-live-streaming" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

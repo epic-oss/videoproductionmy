@@ -2,14 +2,63 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function VideoProductionPricingGuide() {
   const { openModal } = useQuote();
 
+  const faqData = [
+    {
+      question: "How much does video production cost in Malaysia?",
+      answer: "Video production in Malaysia costs between RM3,000 and RM50,000 or more per project. A basic corporate video starts around RM3,000 to RM8,000, event coverage ranges from RM2,500 to RM10,000, and high-end TV commercials can exceed RM50,000. Pricing depends on video length, production complexity, crew size, and post-production requirements."
+    },
+    {
+      question: "What is the cheapest type of video production in Malaysia?",
+      answer: "Social media content videos are typically the most affordable, starting from RM1,500 to RM5,000. Testimonial videos (RM2,000 to RM6,000) and product videos (RM2,000 to RM8,000) are also budget-friendly options for businesses looking to get started with video content."
+    },
+    {
+      question: "Why does video production pricing vary so much in Malaysia?",
+      answer: "Pricing varies based on several factors including pre-production complexity (scripting, storyboarding, location scouting), crew size and equipment quality, shooting duration and number of locations, and post-production work such as editing, colour grading, motion graphics, and sound design. Post-production alone can add 30 to 50 percent to production costs."
+    },
+    {
+      question: "Is video production cheaper outside of Kuala Lumpur?",
+      answer: "Yes, video production is generally cheaper outside KL. Kuala Lumpur rates average RM5,000 to RM20,000 for a corporate video, while other states like Penang (RM3,500 to RM12,000) and Johor (RM3,000 to RM10,000) offer more competitive pricing. However, companies outside major cities may include travel surcharges."
+    },
+    {
+      question: "How can I get the best value for video production in Malaysia?",
+      answer: "To get the best value, compare quotes from at least 3 production companies, define your project scope clearly in a written brief, confirm what is included in the quote (scripting, revisions, music licensing, delivery formats), review portfolios before deciding, and consider bundled packages if you need multiple videos."
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Video Production Pricing Malaysia", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -162,6 +211,19 @@ export default function VideoProductionPricingGuide() {
             </li>
           ))}
         </ol>
+
+        {/* FAQ */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqData.map((faq, i) => (
+              <div key={i} className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-center text-white mb-10">

@@ -2,14 +2,74 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function DroneVideographyGuide() {
   const { openModal } = useQuote();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does drone videography cost in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Drone videography costs RM1,500–RM10,000+ in ${currentYear}. A half-day aerial shoot starts at RM1,500, while cinematic multi-location projects cost RM5,000–RM10,000+.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a permit for drone filming in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All commercial drone operations require CAAM authorization. Your hired drone operator should hold a valid Remote Pilot License (RPL) and Unmanned Aircraft Operator Certificate (UAOC). They handle the permits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can drones fly everywhere in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Drones cannot fly within 5 nautical miles of airports, over military installations, above crowds, or higher than 400 feet without special clearance. Urban areas in KL have additional restrictions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What quality can I expect from drone footage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Professional drone operators use 4K or higher resolution cameras with stabilized gimbals. Modern drones like DJI Inspire 3 and Mavic 3 Pro deliver cinema-quality aerial footage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if it rains on the shoot day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most operators include a rain date policy. Drones cannot fly in rain, so shoots are rescheduled at no extra cost if weather conditions are unsafe. Discuss the rain policy before booking."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Drone Videography Malaysia", "item": "https://videoproductionmy.com/guide/drone-videography-malaysia" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

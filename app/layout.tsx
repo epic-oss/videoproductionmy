@@ -35,6 +35,26 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/logo/favicon.png" type="image/png" sizes="48x48" />
         <link rel="apple-touch-icon" href="/logo/vpmy-logo.png" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "VideoProductionMY",
+              url: "https://videoproductionmy.com",
+              logo: "https://videoproductionmy.com/logo/vpmy-logo.png",
+              description:
+                "Find the best video production companies in Malaysia. Get free quotes for corporate videos, commercials, event coverage and more.",
+              sameAs: [],
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                url: "https://videoproductionmy.com/contact",
+              },
+            }),
+          }}
+        />
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-G45RK9LLB3"

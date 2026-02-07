@@ -66,6 +66,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "event-videography-packages",
     "agm-live-streaming",
     "drone-videography-malaysia",
+    "production-house-vs-freelancer",
+    "in-house-vs-outsource-video",
+    "ugc-vs-professional-video",
+    "animation-vs-live-action",
+    "stock-footage-vs-original-shoot",
+    "ai-video-production-malaysia",
+    "tiktok-video-production",
+    "live-streaming-services-malaysia",
+    "vertical-video-corporate",
+    "virtual-production-malaysia",
+    "how-much-does-corporate-video-cost-malaysia",
+    "videographer-day-rate-malaysia",
+    "finas-permit-corporate-video",
+    "video-production-timeline",
+    "ai-voiceover-corporate-video",
+    "finas-spp-license-explained",
+    "video-crew-catering-rates-kl",
+    "podcast-studio-rental-pj",
   ];
 
   const guidePages: MetadataRoute.Sitemap = guideSlugs.map((slug) => ({
@@ -82,6 +100,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "event-video-kl",
     "drone-video-selangor",
     "product-video-kl",
+    "event-video-penang",
+    "corporate-video-johor",
+    "drone-video-kl",
+    "event-video-selangor",
+    "product-video-selangor",
   ];
 
   const serviceLocationPages: MetadataRoute.Sitemap = serviceLocationSlugs.map((slug) => ({

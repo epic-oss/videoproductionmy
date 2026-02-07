@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
@@ -99,8 +100,56 @@ const topCompanies = [
 export default function TopVideoProductionCompaniesKL() {
   const { openModal } = useQuote();
 
+  const faqData = [
+    {
+      question: "What is the best video production company in Kuala Lumpur?",
+      answer: "Based on client ratings and portfolio quality, the top video production companies in KL include Vix Content (5.0 rating, best for corporate videos), Lemon Sky Studios (4.9 rating, best for animation), and Twin Effect Studio (4.9 rating, best mid-range option). The best choice depends on your project type and budget."
+    },
+    {
+      question: "How much do KL video production companies charge?",
+      answer: "Video production companies in Kuala Lumpur charge between RM2,500 and RM50,000 or more per project. Budget-friendly options like Brolens Production start from RM2,500, mid-range companies charge RM4,000 to RM15,000, and premium studios like Lemon Sky can exceed RM50,000 for high-end commercials and animation."
+    },
+    {
+      question: "How do I choose the right video production company in KL?",
+      answer: "To choose the right company, consider four key factors: Google review ratings and volume, portfolio quality relevant to your industry, their specialisation areas, and pricing transparency. Always request quotes from at least 3 companies and review their past work before deciding."
+    },
+    {
+      question: "Do KL video production companies work with clients outside Kuala Lumpur?",
+      answer: "Yes, most KL-based video production companies serve clients throughout Malaysia and can travel to any location. Some may charge additional travel fees for outstation shoots in states like Penang, Johor, or East Malaysia."
+    },
+    {
+      question: "What types of videos do KL production companies specialise in?",
+      answer: "KL production companies specialise in a wide range of video types including corporate videos, TV commercials, social media content, event coverage, product videos, animation and motion graphics, training videos, and testimonial videos. Many companies focus on 2 to 3 areas of expertise."
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Top Video Production Companies in KL", "item": "https://videoproductionmy.com/guide/top-video-production-companies-kl" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -206,6 +255,19 @@ export default function TopVideoProductionCompaniesKL() {
             </tbody>
           </table>
         </div>
+
+        {/* FAQ */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqData.map((faq, i) => (
+              <div key={i} className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-center text-white mb-10">

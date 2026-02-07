@@ -2,14 +2,66 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function EventVideographyPackagesGuide() {
   const { openModal } = useQuote();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does event videography cost in Malaysia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `Event videography costs RM2,000–RM15,000+ in ${currentYear}. Basic single-camera coverage starts at RM2,000, while multi-camera packages with drone and same-day edit are RM8,000–RM15,000.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a same-day edit (SDE)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A same-day edit is a highlight video edited on-site and played back at the end of the event. It typically requires a dedicated editor with a laptop workstation at the venue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many cameras do I need for my event?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For small events (under 100 pax), 1–2 cameras suffice. For conferences, galas, or product launches, 2–3 cameras ensure complete coverage from multiple angles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take to receive the final video?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most companies deliver highlight reels within 1–2 weeks and full event recordings within 2–4 weeks after the event date."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Event Videography Packages & Pricing Malaysia", "item": "https://videoproductionmy.com/guide/event-videography-packages" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -2,14 +2,74 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function ProductVideoEcommerceGuide() {
   const { openModal } = useQuote();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a product video cost for Shopee?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `A basic product video for Shopee costs RM500–RM1,500 in ${currentYear}. Simple rotating product shots are the most affordable, while lifestyle videos with models cost RM2,000–RM5,000.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What video format does Shopee and Lazada accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Shopee accepts MP4 videos up to 60 seconds, minimum 480p resolution. Lazada accepts MP4 up to 60 seconds with a maximum file size of 100MB. Both platforms recommend vertical or square format for mobile viewers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do product videos really increase sales?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Listings with product videos see up to 80% higher conversion rates on average. Videos also reduce return rates because customers have a clearer understanding of the product before purchasing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use the same video for Shopee, Lazada, and TikTok Shop?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but optimize for each platform. Shopee and Lazada prefer clean product demos (square or vertical), while TikTok Shop performs better with UGC-style, energetic content in 9:16 vertical format."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many products can be filmed in one session?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most video production companies can shoot 5–15 simple product videos in a single session. Bulk pricing typically offers 30–50% savings compared to individual product video shoots."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Product Video for Shopee & Lazada Sellers", "item": "https://videoproductionmy.com/guide/product-video-ecommerce" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

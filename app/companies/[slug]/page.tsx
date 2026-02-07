@@ -6,6 +6,7 @@ import { getCompanyBySlug, companies } from "@/lib/data";
 import { useQuote } from "../../components/QuoteContext";
 import CompanyLogo from "../../components/CompanyLogo";
 import { notFound } from "next/navigation";
+import JsonLd from "../../components/JsonLd";
 
 export default function CompanyProfilePage() {
   const params = useParams();
@@ -17,8 +18,42 @@ export default function CompanyProfilePage() {
     notFound();
   }
 
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: company.name,
+    description: company.shortDescription,
+    url: `https://videoproductionmy.com/companies/${company.slug}`,
+    telephone: company.phone,
+    email: company.email,
+    image: company.image,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: company.location,
+      addressCountry: "MY",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: company.rating,
+      reviewCount: company.reviewCount,
+      bestRating: 5,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://videoproductionmy.com" },
+      { "@type": "ListItem", position: 2, name: "Companies", item: "https://videoproductionmy.com/companies" },
+      { "@type": "ListItem", position: 3, name: company.name, item: `https://videoproductionmy.com/companies/${company.slug}` },
+    ],
+  };
+
   return (
     <div>
+      <JsonLd data={localBusinessSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

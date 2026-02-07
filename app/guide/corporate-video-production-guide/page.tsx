@@ -2,14 +2,63 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function CorporateVideoProductionGuide() {
   const { openModal } = useQuote();
 
+  const faqData = [
+    {
+      question: "How much does corporate video production cost in Malaysia?",
+      answer: "Corporate video production in Malaysia typically costs between RM3,000 and RM15,000 per project. Basic talking-head videos start around RM3,000, while high-end productions with animation, multiple locations, and professional talent can exceed RM20,000."
+    },
+    {
+      question: "How long does it take to produce a corporate video?",
+      answer: "Most corporate videos take 2 to 6 weeks from initial brief to final delivery. Pre-production (planning, scripting, logistics) takes 1-2 weeks, production (filming) takes 1-3 days, and post-production (editing, colour grading, delivery) takes 1-3 weeks."
+    },
+    {
+      question: "What types of corporate videos are most effective?",
+      answer: "The most effective corporate videos include company profile videos, product or service demos, testimonial videos, training and onboarding videos, CSR and sustainability content, and recruitment videos. The best type depends on your business objectives and target audience."
+    },
+    {
+      question: "How many revision rounds are included in corporate video production?",
+      answer: "Most video production companies in Malaysia include 2 to 3 revision rounds in their standard packages. Additional revisions beyond the included rounds may incur extra charges. It is important to confirm this before signing a contract."
+    },
+    {
+      question: "What should I prepare before hiring a corporate video production company?",
+      answer: "Before hiring a production company, you should define your video objectives and target audience, prepare key messages, set a realistic budget, decide on distribution channels, and gather any brand guidelines or reference videos. Sharing a written brief helps companies provide accurate quotes."
+    },
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Corporate Video Production Guide", "item": "https://videoproductionmy.com/guide/corporate-video-production-guide" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,6 +214,19 @@ export default function CorporateVideoProductionGuide() {
             ))}
           </ul>
         </div>
+
+        {/* FAQ */}
+        <section className="mb-10">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqData.map((faq, i) => (
+              <div key={i} className="border border-gray-200 rounded-lg p-5">
+                <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-600">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* CTA */}
         <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-8 text-center text-white mb-10">

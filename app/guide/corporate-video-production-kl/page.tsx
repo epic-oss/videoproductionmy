@@ -2,14 +2,66 @@
 
 import Link from "next/link";
 import { useQuote } from "@/app/components/QuoteContext";
+import JsonLd from "@/app/components/JsonLd";
 
 const currentYear = new Date().getFullYear();
 
 export default function CorporateVideoKLGuide() {
   const { openModal } = useQuote();
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does a corporate video cost in KL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `A corporate video in Kuala Lumpur costs RM5,000–RM50,000+ in ${currentYear}. A standard company profile video is RM5,000–RM15,000, while high-end TVCs can exceed RM100,000.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does corporate video production take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Typically 2–6 weeks from briefing to final delivery. Pre-production takes 1–2 weeks, filming 1–2 days, and post-production 1–3 weeks depending on complexity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do KL companies serve clients outside KL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Most KL-based video production companies serve clients nationwide and can travel to any location in Malaysia. Some charge additional travel fees for outstation shoots."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I prepare before hiring a video production company?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Have a clear objective, target audience, key messages, budget range, and timeline. A brief document helps companies provide accurate quotes."
+        }
+      }
+    ]
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://videoproductionmy.com" },
+      { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://videoproductionmy.com/guide/video-production-pricing-malaysia" },
+      { "@type": "ListItem", "position": 3, "name": "Corporate Video Production in Kuala Lumpur", "item": "https://videoproductionmy.com/guide/corporate-video-production-kl" }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <JsonLd data={faqSchema} />
+      <JsonLd data={breadcrumbSchema} />
       {/* Hero */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

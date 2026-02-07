@@ -20,10 +20,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Video Production Companies Malaysia | Corporate Video Production Services",
   description: "Find the best video production companies in Malaysia. Get free quotes for corporate videos, commercials, event coverage & more.",
-  icons: {
-    icon: "/logo/vpmy-logo.png",
-    apple: "/logo/vpmy-logo.png",
-  },
   verification: {
     google: "y6Bi8UADY_pPTCodZV7bDnA3a1JPPDlsYP90lSQW9DQ",
   },

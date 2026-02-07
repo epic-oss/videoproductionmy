@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import QuoteModal from "./components/QuoteModal";
+import FloatingCTA from "./components/FloatingCTA";
 import { QuoteProvider } from "./components/QuoteContext";
 
 const geistSans = Geist({
@@ -79,6 +80,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <QuoteModal />
+          <FloatingCTA />
         </QuoteProvider>
       </body>
     </html>
